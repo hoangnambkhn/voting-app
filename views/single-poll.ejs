@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">  
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">  
+
+    <link href="../main.css"  type="text/css" rel="stylesheet">
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+  </head>
+<body>
+<% include ../views/header.ejs %>
+<script type="text/javascript">
+        var optionForChoose=[];
+        var title ;
+        var currentUrl = window.location.href;
+        var id = currentUrl.substring(currentUrl.lastIndexOf('?') + 1);
+        console.log('url:'+id);
+        $.get('/getSinglePoll/?'+id , function(data) {
+          console.log(data);
+          // var userId = data.poll[1].userId;
+          if(data.poll[1]!=undefined ){
+             if (data.poll[1].userId==data.poll[0].userId) {
+              var e = document.getElementById("btnRemovePoll");
+              e.style.display="block";
+              
+            }
+          }
+          var pollName = data.poll[0].pollName;
+          var listoptions = data.poll[0].options;
+          for(var i = 0 ; i < listoptions.length;i++){
+            optionForChoose.push([listoptions[i].optionName,listoptions[i].optionVote]); //change data
+            console.log(optionForChoose);
+          }
+          document.getElementById('p-poll-name').innerHTML = pollName;
+          var select = document.getElementById('votefor');
+          for(var i=0;i<listoptions.length;i++){
+            var opt = document.createElement('option');
+            opt.value = listoptions[i].optionName;
+            opt.innerHTML = listoptions[i].optionName;
+            select.appendChild(opt);
+            console.log("added")
+          }
+          var opt = document.createElement('option');
+          opt.value = "Create new option";
+          opt.innerHTML = "Create new option";
+          select.appendChild(opt);
+          
+          //create chart
+          google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+          google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows(optionForChoose);
+
+        // Set chart options
+        var options = {'title':pollName,
+                       'width':690,
+                       'height':345};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+        }
+        })
+        $(document).ready(function(){
+          var newOption = document.getElementById("new-option-vote");
+          $('#votefor').change(function () {
+            if ($(this).val() === 'Create new option') {
+              newOption.style.display="block";
+            } else {
+              newOption.style.display="none";
+            }
+          });
+        });
+          
+	</script>
+ <div class = "singlepoll-container">
+    <div class = "row">
+      <div id = "vote-div" class = "col-sm-4">
+        <!-- -->
+        <p id = "p-poll-name">best of SKTT1</p>
+        <form action = "/voteformsubmit" method ='get'>
+          <div class = "form-group">
+            <div class = "row">
+              <div class = "col-xs-12">
+                <div class = "form-group">
+                  <label id = "labelofVotefor" for="votefor">I'd like to vote for...:</label>
+                     <select id="votefor" name="select" onChange="select" class= "form-control form-control-lg"  placeholder="Choose an options..">
+                      <!--<option ng-repeat="option in chartLabels" ng-value="option" class="ng-binding ng-scope" value="Bang">Bang</option>-->
+                      <!--<option ng-repeat="option in chartLabels" ng-value="option" class="ng-binding ng-scope" value="Wolf">Wolf</option>-->
+                      <!--<option ng-repeat="option in chartLabels" ng-value="option" class="ng-binding ng-scope" value="Faker">Faker</option>-->
+                      <!--<option ng-repeat="option in chartLabels" ng-value="option" class="ng-binding ng-scope" value="Bengi">Bengi</option>-->
+                      <!--<option ng-repeat="option in chartLabels" ng-value="option" class="ng-binding ng-scope" value="Duke">Duke</option>-->
+                      <!--<option>Huni</option>-->
+                      <!--<option ng-show="userId" value="===custom-option">I'd like a custom option</option>-->
+                    </select>
+                  <div id = "new-option-vote" class="form-group" style = "display:none">
+                    <label for="custom-option">Vote with my own option: </label>
+                    <input id="customoption" name = "customoption" type="text" ng-model="voteforCustom" ng-trim="true" class="ng-pristine ng-untouched ng-valid">
+                  </div>
+                </div>
+              </div>
+              <div class = "col-xs-12">
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class = "row">
+          <div class = "col-xs-12">
+            <div class= "share-button" style = "width :100%">
+              <a href="https://twitter.com/share" target="_blank" >
+              <button id="button-tweet" class="btn btn-info" target="_blank" onload="myFunction();" style = "width:100%"> Share on twitter
+              </button>
+            </a>            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div id = "chart-div" class = "col-sm-8">
+        <!-- -->
+        <div class = "chart-container">
+          <div id="chart_div" style="width: 690px; height: 345px;"></div>
+          <!--<canvas class="chart chart-doughnut ng-isolate-scope test-div" chart-data="chartData" chart-labels="chartLabels" chart-legend="true" height="345" width="690" style="width: 690px; height: 345px;">-->
+           
+          <!--</canvas>-->
+<!--           <chart-legend><ul class="doughnut-legend">
+            <li><span style="background-color:rgba(151,187,205,1)"></span>Bang</li>
+            <li><span style="background-color:rgba(220,220,220,1)"></span>Wolf</li>
+            <li><span style="background-color:rgba(247,70,74,1)"></span>Faker</li>
+            <li><span style="background-color:rgba(70,191,189,1)"></span>Bengi </li>
+            <li><span style="background-color:rgba(253,180,92,1)"></span>Marin</li>
+            <li><span style="background-color:rgba(148,159,177,1)"></span>Duke</li>
+            <li><span style="background-color:rgba(77,83,96,1)"></span>Blank</li>
+            <li><span style="background-color:rgba(255,251,52,1)"></span>Peanut</li>
+            <li><span style="background-color:rgba(254,101,109,1)"></span>Huni</li>
+            </ul>
+          </chart-legend> -->
+        </div>
+        <a href = "removePoll">
+        <button action = "/removePoll" style="display:none" id = "btnRemovePoll" class="btn btn-block btn-danger" ng-click="removePoll()" ng-show="isPollOwner">Remove this Poll</button>
+        </a>
+      </div>
+    </div>
+    </div>
+
+</div>
+</body>

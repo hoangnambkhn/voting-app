@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">  
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">  
+    
+	<link href="../main.css"  type="text/css" rel="stylesheet">
+
+	<script src="../main.js" type="text/javascript" charset="utf-8" async defer></script>
+</head>
+<body>
+<% include ../views/header.ejs %>
+ <div class = "home-container">
+    <div id="content" class="text-center"> 
+    <div id="title">
+     Voting App 
+    </div>
+    <div id="describe">
+      Below are polls hosted by fcc-voting. </br>
+      Select a poll to see the results and vote, or <a href = "/login">sign-in</a> to make a new poll.
+      
+    </div>
+    <div class="text-center">
+      <div class="list-group list-inline center-block text-center" id="list-poll" >
+        <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+         <script >
+        $.get("/getMyPolls", function(data) {
+            console.log(data);
+        for(var i = 0; i < data.polls.length; i++){
+              var html = '';
+              html += '<a href="/singlePoll?id=' + data.polls[i]._id +'"';
+          	  html += 'class = "list-group-item"'+ '>';
+              html += data.polls[i].pollName;
+              html += '</a>';
+              $('#list-poll').append(html);
+            }
+        });
+     
+    </script>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

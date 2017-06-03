@@ -1,0 +1,40 @@
+<div id="header" style="margin:10px;">
+<% if(!user) { %>
+<div id = "home" class = "header">
+    <a href = '/home'>
+    <button type="button" class="btn btn-primary-outline">fcc-voting
+</button>
+    </a>
+      <a href = "about">
+    <button class = " right btn btn-danger" id = "btn-about"> About </button>    
+    </a>
+    <a href="/login">
+    <button class=" right btn btn-primary" id="btn-signin"> Sign in with Twitter </button>
+    </a>
+    <a href = "home">
+    <button class=" right btn btn-primary-outline" id="btn-home"> Home </button>
+    </a>
+  </div>
+  
+<% } else { %>
+    <div class = "header" id="home">
+    <a href = '/home'>
+    <button type="button" class="btn btn-primary-outline">fcc-voting</button>
+    </a>
+    <div id="sign-out" style="float: right; margin-right:10px; padding:7px;">
+        <%= user.displayName %>, <a href ="/logout" >Sign out </a>
+    </div>
+    <a href = "/new-poll">
+        <button class="right btn btn-primary-outline"> Create Poll </button>
+    </a>
+    <a href = "/my-poll">
+        <button class="right btn btn-primary-outline" > My Polls </button>
+    </a>
+    <a href = "home">
+        <button class="right btn btn-primary-outline" id="btn-home"> Home </button>
+    </a>
+    
+    </div>
+    
+<% } %>
+</div>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">  
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">  
+    
+	<link href="../main.css"  type="text/css" rel="stylesheet">
+
+	<script src="../main.js" type="text/javascript" charset="utf-8" async defer></script>
+</head>
+<body>
+<div id="header" style="margin:10px;">
+
+<div id="home">
+    <a href="/login">
+    <button class="btn btn-primary" id="btn-signin"> Sign in with Twitter </button>
+    </a>
+    <a href = "home">
+    <button class="btn btn-default" id="btn-home"> Home </button>
+    </a>
+  </div>
+  
+
+</div>
+<div id="content" class="text-center">
+   <div id="title">
+     Voting App 
+   </div>
+    <div id="describe">
+      Below are polls hosted by fcc-voting. </br>
+      Select a poll to see the results and vote, or sign-in to make a new poll.
+
+    </div>
+    <div class="text-center">
+    <div id="list-poll" class="text-center" style="margin:15px 200px">
+      <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <!--<script >-->
+        
+    <!--    $.get("/getPolls", function(data) {-->
+    <!--    for(var i = 0; i < data.polls.length; i++){-->
+    <!--          var html = '<div class="row text-center" class="single-poll" >';-->
+    <!--          html +='<div class="col-md-2"></div>'-->
+    <!--          html +='<div class="col-md-8">';-->
+    <!--          html += '<a href="/singlePoll?id=' + data.polls[i]._id + '">';-->
+    <!--          html += '<button style="margin: 5px; width:100% ">'-->
+    <!--          html += data.polls[i].pollName;-->
+    <!--          html += '</button>'-->
+    <!--          html += '</a>';-->
+    <!--          html += '</div>';-->
+    <!--          html += '</div>';-->
+    <!--          $('#list-poll').append(html);-->
+    <!--        }-->
+    <!--    });-->
+     
+    <!--</script>-->
+    </div>
+    </div>
+  </div>
+ 
+</body>

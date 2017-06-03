@@ -1,0 +1,18 @@
+Các lệnh quan trọng của git :
+	+ Add và commit cái vừa chỉnh sửa : 
+		git add .
+		git commit -m "initial commit"
+
+	+ Push lên git : 
+		git push origin master
+	+ Để add url của repository hiện tại lên git : 
+		git remote add origin url
+		git push origin master
+
+	+ Trong heroku dùng port bất kì nên phải dùng var port = process.env.PORT || 8080;
+
+Trong mongoDB : 
+	+ Phải tạo folder data trước 
+	+ Để chạy ít data : mongod --port 27017 --dbpath=./data --smallfiles
+	+ Cài đặt : sudo apt-get install mongodb-org
+			npm install mongodb

@@ -1,0 +1,180 @@
+#home {
+  
+}
+
+#content {
+  color : black;
+  font-size : 20px;
+}
+
+#title {
+  color : black ;
+  font-size : 30px;
+  font-weight : bold;
+}
+#list-poll{
+  padding : 5px;
+  text-align: center;
+}
+
+.single-poll{
+  
+  /*font-size : 20px;*/
+  /*margin: 10px;*/
+}
+
+.title {
+ font-size: 60px;
+ font-weight: bold;
+}
+.newpoll-container {
+  background :#EEEEEE;
+  padding-top: 60px;
+  padding-left :60px;
+  padding-right :60px;
+  padding-bottom : 40px;
+  width:1200px; margin:20px auto;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius : 8px;
+  border-color: #EEEEEE;
+}
+.home-container {
+  background :#EEEEEE;
+  padding-top: 60px;
+  padding-left :60px;
+  padding-right :60px;
+  padding-bottom : 40px;
+  width:1200px; margin:20px auto;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius : 8px;
+  border-color: #EEEEEE;
+}
+.header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background :#EEEEEE;
+  padding-left :20px;
+  /*position: fixed;*/
+  padding-right :20px;
+  width:1200px; margin:0px auto;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color : #EEEEEE;
+  border-radius : 8px;
+}
+.btn-primary-outline {
+  background-color: transparent;
+  border-color: #EEEEEE;
+}
+.btn {
+  font-size: 16px;
+}
+.right {
+   float:right;
+  margin-right: 10px;
+}
+#sign-out{
+  float: right;
+  margin-right:10px;
+  vertical-align: middle;
+}
+
+.list-group {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.list-group-item {
+  position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.singlepoll-container {
+  background :#EEEEEE;
+  padding-top: 40px;
+  padding-left :70px;
+  padding-right :70px;
+  padding-bottom : 40px;
+  width:1200px; margin:20px auto;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius : 8px;
+  border-color: #EEEEEE;
+}
+.test-div {
+  width : 690px;
+  height : 420px;
+  border-style:solid;
+  border-width : 1px;
+  border-radius : 1px;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+div {
+  display : block;
+}
+.col-xs-12 {
+  width: 100%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 2px 12px 2px 12px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding-top: 0px;
+    padding-right: 2px;
+    padding-bottom: 1px;
+    padding-left: 2px;
+}
+.ng-hide{
+    display: none !important;
+}
+.btn-block {
+  display : block;
+  width : 100%;
+}
+p {
+  margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 200;
+}
+.hide {
+  display: none;
+}
+.chart-div {
+  background :#EEEEEE;
+}

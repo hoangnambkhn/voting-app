@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">  
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">  
+    
+	<link href="../main.css"  type="text/css" rel="stylesheet">
+
+	<script src="../main.js" type="text/javascript" charset="utf-8" async defer></script>
+</head>
+<body>
+<% include ../views/header.ejs %>
+<div class = "newpoll-container">
+  <div class = "title">Make a new poll!</div>
+  <form action = /submit-poll>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Title:</label>
+    <input type="text" class="form-control" id="titleinput" name =  "titleinput" placeholder="Best of Nmazzr ^^">
+  </div>
+  <div class="form-group">
+    <label for="exampleTextarea">Options (seperated by line):</label>
+    <textarea class="form-control" id="options" name = "options" rows="4"></textarea>
+  </div>
+    <button type="submit" class="btn btn-primary">Make!</button>
+    <button type="reset" class = "btn btn-danger">Reset!</button>
+</form>
+  </div>
+ 
+</body>
